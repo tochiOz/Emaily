@@ -14,7 +14,8 @@ module.exports = {
         type: Sequelize.STRING
       },
       credits: {
-        type: Sequelize.REAL
+        type: Sequelize.REAL,
+        defaultValue: '5'
       },
       createdAt: {
         allowNull: false,
