@@ -1,25 +1,22 @@
 "use strict";
 
-var _passport = _interopRequireDefault(require("passport"));
-
-var _keys = _interopRequireDefault(require("./../webpack/keys"));
-
-var _models = _interopRequireDefault(require("./../models"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+const passport = require('passport');
 
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
+const keys = require('./../webpack/keys');
+
+const models = require('./../models');
+
 const {
   User
-} = _models.default; //serialize user
+} = models; //serialize user
 
-_passport.default.serializeUser((user, done) => {
+passport.serializeUser((user, done) => {
   done(null, user.id);
 }); //deserialize user
 
-
-_passport.default.deserializeUser((id, done) => {
+passport.deserializeUser((id, done) => {
   User.findOne({
     where: {
       id
@@ -28,11 +25,11 @@ _passport.default.deserializeUser((id, done) => {
     done(null, user);
   });
 });
-
-_passport.default.use(new GoogleStrategy({
-  clientID: _keys.default.GoogleClientID,
-  clientSecret: _keys.default.GoogleClientSECRET,
-  callbackURL: '/auth/google/callback'
+passport.use(new GoogleStrategy({
+  clientID: keys.GoogleClientID,
+  clientSecret: keys.GoogleClientSECRET,
+  callbackURL: '/auth/google/callback',
+  proxy: true
 }, async (accessToken, refreshToken, profile, done) => {
   const existingUser = await User.findOne({
     where: {
