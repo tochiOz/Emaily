@@ -100,3 +100,6 @@ tests/report/
 
 # vscode setup
 .vscode
+
+# keys config
+src/webpack/dev.js
