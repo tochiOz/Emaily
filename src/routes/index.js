@@ -1,4 +1,4 @@
-// import auth from './auth';
+import auth from './auth';
 // import product from './product';
 // import user from './user';
 
@@ -14,11 +14,9 @@ export default (app) => {
 		res.status(200).send('Welcome to Emaily Survey App');
 	});
 
-	// app.use('/api/v1', [
-	// 	auth,
-	// 	product,
-	// 	user
-	// ]);
+	app.use('/', [
+		auth
+	]);
 
 	app.all('/*', (req, res) =>
 		res.status(404).send({
