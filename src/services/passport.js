@@ -1,7 +1,7 @@
-import passport from 'passport';
+const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
-import keys from './../webpack/keys';
-import models from './../models';
+const keys = require('./../webpack/keys');
+const models = require('./../models');
 const { User } = models;
 
 //serialize user
