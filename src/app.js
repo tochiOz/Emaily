@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import route from './routes';
 import cors from 'cors';
+require('./../services/passport');
 
 const app = express();
 
