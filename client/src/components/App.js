@@ -14,9 +14,11 @@ function App (){
 				<BrowserRouter>
 					<div>
 						<Header />
-						<Route exact path='/' component={Landing} />
-						<Route path='/surveys' component={Dashboard} />
-						<Route path='/survey/new' component={Survey} />
+						<div className='container'>
+							<Route exact path='/' component={Landing} />
+							<Route path='/surveys' component={Dashboard} />
+							<Route path='/survey/new' component={Survey} />
+						</div>
 					</div>
 				</BrowserRouter>
 			</div>
