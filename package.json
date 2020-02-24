@@ -4,7 +4,7 @@
   "description": "An App used to send emails for survey",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/index.js --exec babel-node",
+    "server": "nodemon src/index.js --exec babel-node",
     "build": "babel src --out-dir dist",
     "start": "node dist/index.js",
     "test": "nyc mocha --no-timeout './tests' --exit",
@@ -15,7 +15,9 @@
     "undo": "./node_modules/.bin/sequelize db:migrate:undo:all",
     "seed": "./node_modules/.bin/sequelize db:seed:all",
     "sequelize": "sequelize init",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "npm run build",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
@@ -48,6 +50,7 @@
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "chalk": "^3.0.0",
+    "concurrently": "^5.1.0",
     "cookie-session": "^1.4.0",
     "cors": "^2.8.5",
     "coveralls": "^3.0.9",
@@ -67,8 +70,15 @@
     "uuid": "^3.4.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.4",
+    "@babel/node": "^7.8.4",
+    "@babel/polyfill": "^7.8.3",
+    "@babel/preset-env": "^7.8.4",
+    "@babel/register": "^7.8.3",
     "eslint": "^6.1.0",
     "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-esnext": "^4.0.0",
     "eslint-config-node": "^4.0.0",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-jsx-a11y": "^6.2.3",
