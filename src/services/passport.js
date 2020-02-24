@@ -1,7 +1,7 @@
-import passport from 'passport';
+const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
-import keys from './../webpack/keys';
-import models from './../models';
+const keys = require('./../webpack/keys');
+const models = require('./../models');
 const { User } = models;
 
 //serialize user
@@ -23,7 +23,8 @@ passport.use(
 		{
 			clientID: keys.GoogleClientID,
 			clientSecret: keys.GoogleClientSECRET,
-			callbackURL: '/auth/google/callback'
+			callbackURL: '/auth/google/callback',
+			proxy: true
 		},
 		async (accessToken, refreshToken, profile, done) => {
 			const existingUser = await User.findOne({
