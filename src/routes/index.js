@@ -18,10 +18,10 @@ export default (app) => {
 		auth
 	]);
 
-	app.all('/*', (req, res) =>
-		res.status(404).send({
-			status: 'error',
-			error: 'This route is unavailable on this server'
-		})
-	);
+	// app.all('/*', (req, res) =>
+	// 	res.status(404).send({
+	// 		status: 'error',
+	// 		error: 'This route is unavailable on this server'
+	// 	})
+	// );
 };
