@@ -1,15 +1,9 @@
 const proxy = require('http-proxy-middleware');
 
-module.exports = (app) => {
+module.exports = function (app){
 	app.use(
-		proxy.createProxyMiddleware('/auth/google', {
-			target: 'http://localhost:7000',
-			changeOrigin: true
-		})
-	);
-
-	app.use(
-		proxy.createProxyMiddleware('/api/*', {
+		'/api',
+		proxy.createProxyMiddleware({
 			target: 'http://localhost:7000',
 			changeOrigin: true
 		})
