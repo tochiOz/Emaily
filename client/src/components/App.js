@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import * as actions from './../actions';
 import './../App.css';
 
 import Header from './Header';
@@ -7,23 +9,29 @@ const Dashboard = () => <h2>Dashboard</h2>;
 const Survey = () => <h2>Survey</h2>;
 const Landing = () => <h2>Landing</h2>;
 
-function App (){
-	return (
-		<div className='App'>
-			<div className='App-header'>
-				<BrowserRouter>
-					<div>
-						<Header />
-						<div className='container'>
-							<Route exact path='/' component={Landing} />
-							<Route path='/surveys' component={Dashboard} />
-							<Route path='/survey/new' component={Survey} />
+class App extends Component {
+	componentDidMount () {
+		//calling the action
+		this.props.fetchUser();
+	}
+	render () {
+		return (
+			<div className='App'>
+				<div className='App-header'>
+					<BrowserRouter>
+						<div>
+							<Header />
+							<div className='container'>
+								<Route exact path='/' component={Landing} />
+								<Route path='/surveys' component={Dashboard} />
+								<Route path='/survey/new' component={Survey} />
+							</div>
 						</div>
-					</div>
-				</BrowserRouter>
+					</BrowserRouter>
+				</div>
 			</div>
-		</div>
-	);
+		);
+	}
 }
 
-export default App;
+export default connect(null, actions)(App);

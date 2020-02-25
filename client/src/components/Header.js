@@ -9,7 +9,7 @@ class Header extends Component {
 						<a className='left brand-logo'>Emailly</a>
 						<ul className='right'>
 							<li>
-								<a href='/auth/google'>Login With Google</a>
+								<a href='https://facebook.com/'>Login With Google</a>
 							</li>
 						</ul>
 					</div>
