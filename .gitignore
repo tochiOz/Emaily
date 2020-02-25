@@ -102,4 +102,4 @@ tests/report/
 .vscode
 
 # keys config
-src/webpack
+src/webpack/dev.js
