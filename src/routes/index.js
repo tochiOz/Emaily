@@ -1,5 +1,5 @@
 import auth from './auth';
-// import product from './product';
+import billing from './billing';
 // import user from './user';
 
 export default (app) => {
@@ -15,7 +15,8 @@ export default (app) => {
 	});
 
 	app.use('/', [
-		auth
+		auth,
+		billing
 	]);
 
 	// app.all('/*', (req, res) =>
