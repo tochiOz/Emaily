@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Payment from './Payment';
 
 class Header extends Component {
 	//function used to showcase values from the store
@@ -29,11 +30,14 @@ class Header extends Component {
 					</li>
 				);
 			default:
-				return (
+				return [
+					<li key='1'>
+						<Payment />
+					</li>,
 					<li>
 						<a href='/api/logout'>Logout</a>
 					</li>
-				);
+				];
 		}
 	}
 
