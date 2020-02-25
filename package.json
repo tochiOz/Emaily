@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "An App used to send emails for survey",
   "main": "index.js",
-  "proxy": "http://localhost:3000",
   "scripts": {
     "server": "nodemon src/index.js --exec babel-node",
     "build": "babel src --out-dir dist",
