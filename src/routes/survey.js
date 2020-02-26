@@ -25,7 +25,8 @@ router.post(
 			});
 			const emails = recipients.split(',');
 			const mailer = new Mailer(survey, emails, surveyTemplete(survey));
-			return mailer.send();
+			const responseMailer = await mailer.send();
+
 			await emails.map(async (email) => {
 				await Recipient.create({
 					email,
@@ -33,9 +34,12 @@ router.post(
 				});
 			});
 
-			// sending the mail before saving it in the database
+			req.user.credits -= 1;
+			const user = await req.user.save();
+
+			return sendSuccessResponse(res, 200, { user, survey, responseMailer });
 		} catch (error) {
-			return sendErrorResponse(res, 500, error.message);
+			return sendErrorResponse(res, 422, error.message);
 		}
 	}
 );
