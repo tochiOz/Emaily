@@ -1,6 +1,6 @@
 import auth from './auth';
 import billing from './billing';
-// import user from './user';
+import survey from './survey';
 
 export default (app) => {
 	app.get('/api/v1', (req, res) =>
@@ -16,7 +16,8 @@ export default (app) => {
 
 	app.use('/', [
 		auth,
-		billing
+		billing,
+		survey
 	]);
 
 	// app.all('/*', (req, res) =>

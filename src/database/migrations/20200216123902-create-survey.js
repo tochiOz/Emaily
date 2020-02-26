@@ -20,10 +20,12 @@ module.exports = {
 				type: Sequelize.STRING
 			},
 			yes: {
-				type: Sequelize.REAL
+				type: Sequelize.REAL,
+				defaultValue: 0
 			},
 			no: {
-				type: Sequelize.REAL
+				type: Sequelize.REAL,
+				defaultValue: 0
 			},
 			userId: {
 				type: Sequelize.INTEGER,
