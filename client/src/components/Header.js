@@ -69,6 +69,7 @@ class Header extends Component {
 
 //connecting header component to the store
 function mapStateToProps ({ auth }){
+	// console.log(auth);
 	return { auth };
 }
 
