@@ -4,6 +4,7 @@ import surveyField from './surveyField';
 import _ from 'lodash';
 import formFields from './formFields';
 import { Link } from 'react-router-dom';
+import validateEmails from '../../utils/validateEmails';
 
 class SurveyForm extends Component {
 	renderFields () {
@@ -14,9 +15,10 @@ class SurveyForm extends Component {
 	render () {
 		return (
 			<div>
-				<form onSubmit={this.props.handleSubmit((values) => console.log(values))}>
+				<form onSubmit={this.props.handleSubmit(this.props.onSurveySubmit)}>
 					{this.renderFields()}
-					<Link to='/surveys' className='red btn-flat white-text'>
+					<Link to='/surveys' className='red left btn-flat white-text'>
+						<i className='material-icons right'>arrow_back</i>
 						Cancel
 					</Link>
 					<button type='submit' className='teal btn-flat right white-text'>
@@ -29,6 +31,26 @@ class SurveyForm extends Component {
 	}
 }
 
+// validators
+function validate (values){
+	const errors = {};
+
+	// validate emails
+	errors.recipients = validateEmails(values.recipients || '');
+
+	// looping through all name attributes of the input tag
+	_.each(formFields, ({ name, noValueError }) => {
+		if (!values[name]) {
+			errors[name] = noValueError;
+		}
+	});
+
+	return errors;
+}
+
+// redux form helper helps to make te form possible and persistent
 export default reduxForm({
-	form: 'surveyForm'
+	validate,
+	form: 'surveyForm',
+	destroyOnUnmount: false
 })(SurveyForm);
