@@ -17,7 +17,8 @@
     "sequelize": "sequelize init",
     "heroku-postbuild": "npm run build",
     "client": "npm run start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "webhook": "lt -p 7000 -s emailsssssdomain",
+    "dev": "concurrently \"npm run server\" \"npm run client\" \"npm run webhook\""
   },
   "repository": {
     "type": "git",

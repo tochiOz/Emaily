@@ -43,4 +43,6 @@ router.post(
 		}
 	}
 );
+
+router.post('/api/surveys/webhook', async (req, res) => {});
 export default router;
